@@ -17,7 +17,7 @@ code {
   margin: auto;
   padding: 20px;
   width: 600px;
-  height: 500px;
+  height: 1000px;
   background-color: rgb(93, 93, 187);
   border-color: black;
   border-left: 20px solid;
@@ -45,4 +45,12 @@ code {
   background-color: aliceblue;
   height: 30px;
   width: 30px;
+}
+.articulosEnCarrito{
+  background-color: rgb(151, 173, 202);
+  height: 30px;
+  width: 200px;
+  border-color: black;
+  border-bottom: 5px solid;
+  margin-bottom:10px ;
 }
