@@ -39,6 +39,7 @@ useEffect(() => {
                   </div>
                 ))
               }
+              <h6>Total a pagar { p.totalAPagar }</h6>
             </div>
           ) )
         }

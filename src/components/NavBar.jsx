@@ -1,7 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import firebaseApp from "../firebase/credenciales";
+import { getAuth } from 'firebase/auth'
+const auth = getAuth(firebaseApp)
 
 export const NavBar = () => {
+
+  
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -36,6 +42,9 @@ export const NavBar = () => {
                 <Link className="nav-link" to="/">
                   Pricing
                 </Link>
+              </li>
+              <li className="nav-item">
+
               </li>
 
             </ul>
