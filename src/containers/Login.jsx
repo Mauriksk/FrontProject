@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import firebaseApp from '../firebase/credenciales'
 import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth'
+import { getFirestore, doc, setDoc } from 'firebase/firestore'
 const auth = getAuth(firebaseApp)
+const firestore = getFirestore(firebaseApp)
 
 export const Login = () => {
 
@@ -12,7 +14,8 @@ export const Login = () => {
         const infoUsuario = await createUserWithEmailAndPassword(auth, email, password)
         .then( (usuarioFirebase) => usuarioFirebase )
 
-        console.log(infoUsuario)
+        console.log(infoUsuario.user.uid)
+        const docuRef = doc(firebaseApp, `usuarios/${infoUsuario.user.uid}` )
     }
 
 

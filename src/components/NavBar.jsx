@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import firebaseApp from "../firebase/credenciales";
-import { getAuth } from 'firebase/auth'
+import { getAuth, signOut } from 'firebase/auth'
 const auth = getAuth(firebaseApp)
 
 export const NavBar = () => {
@@ -10,7 +10,7 @@ export const NavBar = () => {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
             Ferreteria lo de Raul
@@ -43,8 +43,8 @@ export const NavBar = () => {
                   Pricing
                 </Link>
               </li>
-              <li className="nav-item">
-
+              <li className="nav-item" >
+                <button onClick={()=> signOut(auth)} className="btn btn-outline-info">Salir</button>
               </li>
 
             </ul>
