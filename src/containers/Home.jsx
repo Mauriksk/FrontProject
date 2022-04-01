@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
+
+
+  const baseURL = "http://localhost:8080/"
+
   const [data, setdata] = useState([]);
+  const [carritoCombra, setCarritoCombra] = useState([]);
+  const [valorTotal, setValorTotal] = useState(0);
 
   useEffect(() => {
     fetch("http://localhost:8080/getproductos", {
@@ -47,8 +54,10 @@ export const Home = () => {
   });
 
   const actualizarInv = () => {
+    
+
     carritoCombra.map((n) => {
-      fetch(`http://localhost:8080/actualizarproducto/${n.id}`, {
+      fetch(`${baseURL}actualizarproducto/${n.id}`, {
         method: "PUT",
         headers: {
           Accept: "application/json",
@@ -64,10 +73,11 @@ export const Home = () => {
         .then((data) => console.log(data))
         .catch((err) => console.log(err));
     });
+
+    postFactura()
   };
 
-  const [carritoCombra, setCarritoCombra] = useState([]);
-  const [valorTotal, setValorTotal] = useState(0);
+  
 
   const carritoAgregar = (articulo) => {
     if (pedido[articulo.nombreProducto] < articulo.cantidadDeProducto) {
@@ -102,6 +112,27 @@ export const Home = () => {
         [articulo.nombreProducto]: pedido[articulo.nombreProducto] - 1,
       });
     }
+  };
+
+  
+  // Factura
+
+  const postFactura = () => {
+    fetch(`${baseURL}savefactura`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+          "fecha":null,
+          "consecutivoFactura":null,
+          "nombreCliente":null,
+          "listaProductos":carritoCombra,
+          "funcionarioQueAtendio":"Raul",
+          "totalAPagar":valorTotal
+      }),
+    });
   };
 
   return (
@@ -152,7 +183,8 @@ export const Home = () => {
             <div>
               <button
                 className="btn btn-dark ms-2"
-                onClick={() => actualizarInv()}
+                onClick={ ()=> actualizarInv()}
+                
               >
                 Comprar
               </button>
