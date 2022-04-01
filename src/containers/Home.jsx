@@ -125,7 +125,7 @@ export const Home = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-          "fecha":null,
+          "fecha":new Date().toDateString(),
           "consecutivoFactura":null,
           "nombreCliente":null,
           "listaProductos":carritoCombra,

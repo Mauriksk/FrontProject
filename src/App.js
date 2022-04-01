@@ -10,6 +10,7 @@ import { Login } from "./containers/Login";
 import { useState } from "react";
 import firebaseApp from "./firebase/credenciales";
 import { getAuth, onAuthStateChanged } from "firebase/auth"
+import { Volantes } from "./containers/Volantes";
 const auth = getAuth(firebaseApp)
 
 
@@ -36,6 +37,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/historial" element={<HistorialFacturas />} />
+            <Route path="/volantes" element={<Volantes />} />
           </Routes>
         </Router> 
         : <Login />
