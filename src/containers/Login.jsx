@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import firebaseApp from '../firebase/credenciales'
-import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth'
+import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from 'firebase/auth'
 import { getFirestore, doc, setDoc } from 'firebase/firestore'
 const auth = getAuth(firebaseApp)
 
@@ -33,9 +33,11 @@ export const Login = () => {
         console.log("Submit", email, password, rol)
 
         if(isRegistrando){
+            //registro
             registrarUsuario(email, password, rol)
         }else{
             //login
+            signInWithEmailAndPassword(auth, email, password)
         }
 
     }
