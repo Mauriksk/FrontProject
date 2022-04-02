@@ -7,18 +7,13 @@ import { useDispatch, useSelector } from 'react-redux';
 export const HistorialFacturas = () => {
  
   const { listFacturas } = useSelector( state => state.facturas )
-
-  //console.log(listFacturas)
   const dispatch = useDispatch()
 
   useEffect(() => {
     //El dispatch es quien ejecuta
-
     dispatch(fetchGetFacturas())
   }, [dispatch])
   
-
-
   return (
     <div className='container mt-4'>
       <h1 className='text-info mb-3'>Historial de Facturas</h1>
@@ -38,12 +33,10 @@ export const HistorialFacturas = () => {
               }
               <h6 className='text-info'>Total a pagar { p.totalAPagar }</h6>
             </div>
-          ) )
+          ))
         }
       </div>
-        
       </div>
-      
     </div>
   )
 }

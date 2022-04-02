@@ -19,45 +19,9 @@ export const Home = () => {
 
   const baseURL = "http://localhost:8080/"
 
-  //const [data, setdata] = useState([]);
   const [carritoCombra, setCarritoCombra] = useState([]);
   const [valorTotal, setValorTotal] = useState(0);
-
-  /*
-  useEffect(() => {
-    fetch("http://localhost:8080/getproductos", {
-      method: "GET",
-    })
-      .then((reponse) => reponse.json())
-      .then((res) => {
-        setdata(res);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
-  */
   
-
-  const deleteInv = (articulo) => {
-    fetch(`http://localhost:8080/${articulo.id}`, {
-      method: "DELETE",
-    });
-  };
-
-  const postInv = () => {
-    fetch(`http://localhost:8080/saveproducto`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        nombreProducto: "Mema",
-        valorProducto: 15,
-        cantidadDeProducto: 100,
-      }),
-    });
-  };
 
   const [pedido, setPedido] = useState({
     "Bolsa de Clavos": 0,
@@ -127,7 +91,6 @@ export const Home = () => {
     }
   };
 
-  
   // Factura
 
   const postFactura = () => {
@@ -195,8 +158,7 @@ export const Home = () => {
             <div>
               <button
                 className="btn btn-outline-info ms-2 text-white"
-                onClick={ ()=> actualizarInv()}
-                
+                onClick={ ()=> actualizarInv()}  
               >
                 Comprar
               </button>
@@ -207,64 +169,3 @@ export const Home = () => {
     </div>
   );
 };
-
-
-/*
-
-<h1>Articulos</h1>
-      <div className="contenedorAriculos">
-        {data.map((articulos) => (
-          <div className="divArticulos" key={articulos.id}>
-            <h4>
-              {articulos.nombreProducto} Cantidad:{" "}
-              {articulos.cantidadDeProducto}{" "}
-            </h4>
-            <div className="articulosBotones">
-              <div className="d-flex">
-                <p className="margin-right">Comprar: </p>
-                <div className="numArticulo">
-                  <p>{pedido[articulos.nombreProducto]}</p>
-                </div>
-              </div>
-              <div>
-                <button
-                  className="btn btn-primary"
-                  onClick={() => carritoAgregar(articulos)}
-                >
-                  +1
-                </button>
-                <button
-                  className="btn btn-light"
-                  onClick={() => carritoQuitar(articulos)}
-                >
-                  -1
-                </button>
-              </div>
-            </div>
-          </div>
-        ))}
-        <div className="d-flex justify-content-around">
-          <div className="factura">
-            <h1>Factura </h1>
-            {carritoCombra.map((articulo, index) => (
-              <div key={index + articulo.id} className="articulosEnCarrito">
-                {articulo.nombreProducto} valor: {articulo.valorProducto}
-              </div>
-            ))}
-          </div>
-          <div className="d-flex">
-            <h4 className="mt-1 ">Precio Total: {valorTotal}</h4>
-            <div>
-              <button
-                className="btn btn-dark ms-2"
-                onClick={ ()=> actualizarInv()}
-                
-              >
-                Comprar
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-*/
