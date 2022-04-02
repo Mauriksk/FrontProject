@@ -1,4 +1,6 @@
 import { Home } from "./containers/Home";
+import { Provider } from 'react-redux'
+import store from './store'
 import {
   BrowserRouter as Router,
   Routes,
@@ -29,7 +31,7 @@ function App() {
   console.log( user)
 
   return (
-    <>
+    <Provider store={store} >
       {
         user ? 
         <Router>
@@ -42,7 +44,7 @@ function App() {
         </Router> 
         : <Login />
       }
-    </>
+    </Provider>
   );
 }
 

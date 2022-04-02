@@ -1,15 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { fetchGetproductos } from '../store/slices/facturas'
+import { useDispatch, useSelector } from 'react-redux';
 
 export const Home = () => {
+
+  const { listProductos } = useSelector( state => state.facturas )
+
+  const dispatchProductos = useDispatch()
+  console.log("Lista Productos" + listProductos)
+
+  useEffect(() => {
+    //El dispatch es quien ejecuta
+
+    dispatchProductos(fetchGetproductos())
+  }, [dispatchProductos])
+  
 
 
   const baseURL = "http://localhost:8080/"
 
-  const [data, setdata] = useState([]);
+  //const [data, setdata] = useState([]);
   const [carritoCombra, setCarritoCombra] = useState([]);
   const [valorTotal, setValorTotal] = useState(0);
 
+  /*
   useEffect(() => {
     fetch("http://localhost:8080/getproductos", {
       method: "GET",
@@ -21,7 +35,7 @@ export const Home = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  
+  */
   
 
   const deleteInv = (articulo) => {
@@ -54,7 +68,6 @@ export const Home = () => {
   });
 
   const actualizarInv = () => {
-    
 
     carritoCombra.map((n) => {
       fetch(`${baseURL}actualizarproducto/${n.id}`, {
@@ -125,7 +138,7 @@ export const Home = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-          "fecha":new Date().toDateString(),
+          "fecha":null,
           "consecutivoFactura":null,
           "nombreCliente":null,
           "listaProductos":carritoCombra,
@@ -136,8 +149,69 @@ export const Home = () => {
   };
 
   return (
-    <>
-      <h1>Articulos</h1>
+    <div className="container">
+      <div className="container mt-4">
+        {listProductos.map((articulos) => (
+          <div className="border border-info mt-3 bg-dark bg-gradient px-5 py-1" key={articulos.id}>
+            <h4 className="text-white">
+              {articulos.nombreProducto} Cantidad:{" "}
+              {articulos.cantidadDeProducto}{" "}
+            </h4>
+            <div className="articulosBotones">
+              <div className="d-flex">
+                <p className="text-white margin-right">Comprar: </p>
+                <div className="text-info">
+                  <p>{pedido[articulos.nombreProducto]}</p>
+                </div>
+              </div>
+              <div>
+                <button
+                  className="btn btn-outline-info text-white"
+                  onClick={() => carritoAgregar(articulos)}
+                >
+                  +1
+                </button>
+                <button
+                  className="btn btn-outline-info text-white"
+                  onClick={() => carritoQuitar(articulos)}
+                >
+                  -1
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+        <div className="d-flex justify-content-around mt-5">
+          <div className="text-white">
+            <h1 className="text-white ">Factura </h1>
+            {carritoCombra.map((articulo, index) => (
+              <div key={index + articulo.id} className="text-white border border-info mt-2 px-2 py-2">
+                {articulo.nombreProducto} valor: {articulo.valorProducto}
+              </div>
+            ))}
+          </div>
+          <div className="d-flex">
+            <h4 className="mt-1 text-white">Precio Total: {valorTotal}</h4>
+            <div>
+              <button
+                className="btn btn-outline-info ms-2 text-white"
+                onClick={ ()=> actualizarInv()}
+                
+              >
+                Comprar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+
+/*
+
+<h1>Articulos</h1>
       <div className="contenedorAriculos">
         {data.map((articulos) => (
           <div className="divArticulos" key={articulos.id}>
@@ -192,6 +266,5 @@ export const Home = () => {
           </div>
         </div>
       </div>
-    </>
-  );
-};
+
+*/

@@ -9,9 +9,9 @@ export const NavBar = () => {
   
 
   return (
-    <>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div className="container-fluid">
+    <div className="container">
+      <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
+        <div className="container-fluid ">
           <Link className="navbar-brand" to="/">
             Ferreteria lo de Raul
           </Link>
@@ -26,7 +26,7 @@ export const NavBar = () => {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
+          <div className="collapse navbar-collapse displa" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
                 <Link className="nav-link active" aria-current="page" to="/">
@@ -43,14 +43,18 @@ export const NavBar = () => {
                   Volantes
                 </Link>
               </li>
-              <li className="nav-item" >
-                <button onClick={()=> signOut(auth)} className="btn btn-outline-info">Salir</button>
-              </li>
+              
 
             </ul>
+            
           </div>
+          <div className="d-flex justify-content-end">
+                <li className="nav-item" >
+                  <button onClick={()=> signOut(auth)} className="btn btn-outline-info ">Salir</button>
+                </li>
+              </div>
         </div>
       </nav>
-    </>
+    </div>
   );
 };
