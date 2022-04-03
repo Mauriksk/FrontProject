@@ -66,7 +66,7 @@ export const Volantes = () => {
     const postVolantes = () => {
 
         setarrayList([
-            {Martillos: Matillo,},
+            {Martillo: Matillo,},
             {BolsaDeClavos: BolsaDeClavos},
             {Pintura: Pintura},
             {Taladro: Taladro},
@@ -80,7 +80,13 @@ export const Volantes = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-              "listaProductos":arrayList,
+              "listaProductos":[{
+                  Martillo: Matillo,
+                  BolsaDeClavos: BolsaDeClavos,
+                  Pintura:Pintura,
+                  Taladro:Taladro,
+                  BolsaDePortland:BolsaDePortland
+              }],
               "date": Fecha,
               "cedulaProveedor":Cedula,
               "valorTotal": valorTotal
@@ -277,7 +283,7 @@ export const Volantes = () => {
             <h5 className='text-info'>Valor Total de la compra</h5>
             <div className='mb-2 form-group'>
                 <input 
-                type="number"
+                type="text"
                 name="valorTotal"
                 className="form-control"
                 placeholder="Valor total de la compra"
