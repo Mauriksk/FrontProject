@@ -50,6 +50,15 @@ export const Home = () => {
     });
 
     postFactura()
+    setPedido({
+      "Bolsa de Clavos": 0,
+      Martillo: 0,
+      Pintura: 0,
+      Taladro: 0,
+      "Bolsa de Portland": 0,
+    })
+    setCarritoCombra([])
+    setValorTotal(0)
   };
 
   
@@ -72,6 +81,7 @@ export const Home = () => {
       ]);
 
       setValorTotal(valorTotal + articulo.valorProducto);
+      
     }
   };
 
