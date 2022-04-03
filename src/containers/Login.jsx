@@ -62,13 +62,7 @@ export const Login = () => {
                 <input type="password" id='password'/>
             </label>
             <div className='d-flex flex-column justify-content-center align-items-center'>
-            <label className='mt-3 text-white' htmlFor="">
-                Rol : 
-                <select id="rol">
-                    <option value="admin">Administrador</option>
-                    <option value="user">Usuario</option>
-                </select>
-            </label>
+           
             </div>
             </div>
 

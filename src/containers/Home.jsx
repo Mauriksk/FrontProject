@@ -7,11 +7,9 @@ export const Home = () => {
   const { listProductos } = useSelector( state => state.facturas )
 
   const dispatchProductos = useDispatch()
-  console.log("Lista Productos" + listProductos)
 
   useEffect(() => {
     //El dispatch es quien ejecuta
-
     dispatchProductos(fetchGetproductos())
   }, [dispatchProductos])
   

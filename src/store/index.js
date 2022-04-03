@@ -9,15 +9,3 @@ export default configureStore({
     }
 })
 
-
-
-
-/*
-
-const fetchApi = async () => {
-  const response = await fetch(url)
-  const resJSON = await response.json()
-  setdata(resJSON)
-}
-
-*/
