@@ -62,7 +62,8 @@ export const Volantes = () => {
     }
     
 
-    const postVolantes = () => {
+    const postVolantes = (e) => {
+        e.preventDefault()
 
         setarrayList([
             {Martillo: Matillo,},
@@ -92,12 +93,24 @@ export const Volantes = () => {
           }),
         });
         actualizarInventario()
+
+        setFormState({
+            Cedula:'',
+            Fecha:'',
+            Matillo:'',
+            BolsaDeClavos: '',
+            Pintura: '',
+            Taladro: '',
+            BolsaDePortland: '',
+            valorTotal: ''
+        })
       };
 
 
     const actualizarInventario = () => {
         
-        fetch(`${baseURL}actualizarproducto/7b1da9ce-4`, {
+        if(parseInt(Pintura) > 0 ){
+            fetch(`${baseURL}actualizarproducto/7b1da9ce-4`, {
             method: "PUT",
             headers: {
                 Accept: "application/json",
@@ -112,7 +125,9 @@ export const Volantes = () => {
         })
             .then((data) => console.log(data))
             .catch((err) => console.log(err));
+    }
 
+    if(parseInt(BolsaDeClavos) > 0 ){
             fetch(`${baseURL}actualizarproducto/dce27561-8`, {
                 method: "PUT",
                 headers: {
@@ -128,7 +143,9 @@ export const Volantes = () => {
             })
                 .then((data) => console.log(data))
                 .catch((err) => console.log(err));
+        }
                 
+        if(parseInt(Matillo) > 0 ){
             fetch(`${baseURL}actualizarproducto/7a6ba0d3-b`, {
                     method: "PUT",
                     headers: {
@@ -144,7 +161,9 @@ export const Volantes = () => {
                 })
                     .then((data) => console.log(data))
                     .catch((err) => console.log(err));   
+            }
 
+            if(parseInt(Taladro) > 0){
             fetch(`${baseURL}actualizarproducto/b445d4b3-6`, {
                         method: "PUT",
                         headers: {
@@ -160,7 +179,9 @@ export const Volantes = () => {
                     })
                         .then((data) => console.log(data))
                         .catch((err) => console.log(err));
-
+                }
+            
+                if(parseInt(BolsaDePortland) > 0){
             fetch(`${baseURL}actualizarproducto/1f27699b-5`, {
                     method: "PUT",
                     headers: {
@@ -176,6 +197,7 @@ export const Volantes = () => {
                     })
                         .then((data) => console.log(data))
                         .catch((err) => console.log(err));
+                }
     }
 
 
@@ -184,7 +206,7 @@ export const Volantes = () => {
   return (
 
     
-    <div className='container'>
+    <form onSubmit={postVolantes} className='container'>
         <div className='d-flex justify-content-center'>
             <h1 className='text-info'>Volantes</h1>
         </div>
@@ -295,10 +317,10 @@ export const Volantes = () => {
             </div>
 
             <div className='mt-3 d-flex justify-content-center'>
-                <button onClick={ ()=> postVolantes() } className='btn btn-outline-info '>
+                <button type="submit" className='btn btn-outline-info '>
                     Guardar
                 </button>
             </div>
-    </div>
+    </form>
     )
 }
