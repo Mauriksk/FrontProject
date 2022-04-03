@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react'
 import { fetchGetproductos } from '../store/slices/facturas'
 import { useDispatch, useSelector } from 'react-redux';
 
-
 export const Volantes = () => {
 
     const { listProductos } = useSelector( state => state.facturas )
@@ -19,7 +18,7 @@ export const Volantes = () => {
 
     useEffect(() => {
         dispatchProductos(fetchGetproductos())
-        console.log()
+
     },[dispatchProductos])
 
     const baseURL = "http://localhost:8080/"
@@ -183,6 +182,8 @@ export const Volantes = () => {
 
 
   return (
+
+    
     <div className='container'>
         <div className='d-flex justify-content-center'>
             <h1 className='text-info'>Volantes</h1>
