@@ -47,7 +47,7 @@ export const Login = () => {
   return (
 
     
-    <div className='border border-white  py-5 d-flex flex-column justify-content-center align-items-center container mt-5'>
+    <div className='max-width-800 border border-white  py-5 d-flex flex-column justify-content-center align-items-center container mt-5'>
        <h1 className='text-white'>{ isRegistrando ? "Registrate" : "Inicia sesión" }</h1>
 
         <form className='  d-flex flex-column justify-content-center align-items-center ' onSubmit={ submitHandler }>

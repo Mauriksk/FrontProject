@@ -6,7 +6,6 @@
     "@react-pdf/renderer": "^2.1.1",
     "@reduxjs/toolkit": "^1.8.1",
     "@testing-library/jest-dom": "^5.16.3",
-    "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
     "firebase": "^9.6.10",
     "react": "^18.0.0",
@@ -41,6 +40,7 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/react": "^12.1.4",
     "sass": "^1.49.11"
   }
 }

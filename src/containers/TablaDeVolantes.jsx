@@ -17,7 +17,7 @@ export const TablaDeVolantes = () => {
     <div className="container">
       <div className="row">
         <div className="col">
-          <table className="table">
+          <table className="table table-hover table-dark">
             <thead>
               <tr>
                 <th className="text-info">Id Volante</th>

@@ -21,7 +21,7 @@ export const HistorialFacturas = () => {
     <>
 
     <div className='d-flex justify-content-center'>
-      <button className='mt-2 mx-1 btn btn-outline-light' onClick={ ()=> setPaginacion(true)} >
+      <button className='mt-2 mx-1 btn  btn-outline-light' onClick={ ()=> setPaginacion(true)} >
         Facturas
       </button>
       <button className='mt-2 mx-1 btn btn-outline-info' onClick={ ()=> setPaginacion(false) } >

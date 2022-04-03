@@ -140,13 +140,7 @@ export const Home = () => {
                   className="btn btn-outline-info text-white"
                   onClick={() => carritoAgregar(articulos)}
                 >
-                  +1
-                </button>
-                <button
-                  className="btn btn-outline-info text-white"
-                  onClick={() => carritoQuitar(articulos)}
-                >
-                  -1
+                  Agregar Producto
                 </button>
               </div>
             </div>
